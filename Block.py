@@ -1,7 +1,9 @@
-from pygame import sprite, image, Surface, Rect
-from Ini import write_ini_file
 import os
 import random
+
+from pygame import sprite, image, Surface, Rect
+
+from Ini import write_ini_file
 from Pyganim import PygAnimation
 
 ICON_DIR = os.path.dirname(__file__)
@@ -9,7 +11,7 @@ WIDTH_WINDOW = int(write_ini_file().get("Game zone", "width window"))
 HEIGHT_WINDOW = int(write_ini_file().get("Game zone", "height window"))
 BLOCK_SIZE = int(write_ini_file().get("Others", "block size"))
 
-ANIMATION_MONSTER = [('%s/image/OTHERS/MONSTR1.png' % ICON_DIR), ('%s/image/OTHERS/MONSTR2.png' % ICON_DIR)]
+ANIMATION_MONSTER = [('%s/image/others/MONSTR1.png' % ICON_DIR), ('%s/image/others/MONSTR2.png' % ICON_DIR)]
 
 
 class Block(sprite.Sprite):
@@ -67,7 +69,7 @@ class Monster(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
         self.image = Surface((BLOCK_SIZE, BLOCK_SIZE))
-        self.image = image.load('%s/image/OTHERS/MONSTR1.png' % ICON_DIR)
+        self.image = image.load('%s/image/others/MONSTR1.png' % ICON_DIR)
         self.rect = Rect(x, y, BLOCK_SIZE, BLOCK_SIZE)
         self.yvel = self.xvel = 1
         boltAnim = []

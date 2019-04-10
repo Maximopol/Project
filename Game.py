@@ -1,9 +1,11 @@
 from time import sleep
+
 import pygame
-from Block import Block, Monster
+
+from Block import Block
+from Ini import write_ini_file
 from Player import *
 from Robot import Robot
-from Ini import write_ini_file
 
 WIDTH_WINDOW = int(write_ini_file().get("Game zone", "width window"))
 HEIGHT_WINDOW = int(write_ini_file().get("Game zone", "height window"))
@@ -92,8 +94,8 @@ def window1(body1, body2, bot):
     myfont = pygame.font.SysFont("monospace", 30)
     win = pygame.font.SysFont("monospace", 40)
 
-    apte4ka1 = Medicines("%s/image/OTHERS/Medicines.png" % ICON_DIR)
-    apte4ka2 = Medicines("%s/image/OTHERS/Medicines.png" % ICON_DIR)
+    apte4ka1 = Medicines("%s/image/others/Medicines.png" % ICON_DIR)
+    apte4ka2 = Medicines("%s/image/others/Medicines.png" % ICON_DIR)
     hilka_list.add(apte4ka1)
 
     mnt = Monster(600, 200)
@@ -160,7 +162,7 @@ def window2(body1, bot, corrected):
     myfont = pygame.font.SysFont("monospace", 30)
     win = pygame.font.SysFont("monospace", 40)
 
-    apte4ka1 = Medicines("%s/image/OTHERS/Medicines.png" % ICON_DIR)
+    apte4ka1 = Medicines("%s/image/others/Medicines.png" % ICON_DIR)
     hilka_list.add(apte4ka1)
     all_list.add(apte4ka1)
 

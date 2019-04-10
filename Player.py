@@ -1,9 +1,11 @@
-from pygame import *
 import os
+
+from pygame import *
+
 from Block import Medicines, Monster
+from Ini import write_ini_file
 from Pyganim import PygAnimation
 from Snarad import Patron
-from Ini import write_ini_file
 from Start import FON
 
 RIGHT_MOVE = int(write_ini_file().get("Players", "speed"))
@@ -14,23 +16,23 @@ ANIMATION_DELAY = 0.1
 
 ICON_DIR = os.path.dirname(__file__)
 
-ANIMATION_RIGHT = [('%s/image/PLAYER/r1.png' % ICON_DIR), ('%s/image/PLAYER/r2.png' % ICON_DIR),
-                   ('%s/image/PLAYER/r3.png' % ICON_DIR), ('%s/image/PLAYER/r4.png' % ICON_DIR),
-                   ('%s/image/PLAYER/r5.png' % ICON_DIR)]
-ANIMATION_LEFT = [('%s/image/PLAYER/l1.png ' % ICON_DIR), ('%s/image/PLAYER/l2.png' % ICON_DIR),
-                  ('%s/image/PLAYER/l3.png' % ICON_DIR), ('%s/image/PLAYER/l4.png' % ICON_DIR),
-                  ('%s/image/PLAYER/l5.png' % ICON_DIR)]
-ANIMATION_JUMP_LEFT = [('%s/image/PLAYER/jl.png' % ICON_DIR, 0.1)]
-ANIMATION_JUMP_RIGHT = [('%s/image/PLAYER/jr.png' % ICON_DIR, 0.1)]
-ANIMATION_JUMP = [('%s/image/PLAYER/j.png' % ICON_DIR, 0.1)]
-ANIMATION_STAY = [('%s/image/PLAYER/0.png' % ICON_DIR, 0.1)]
-ANIMATION_DEATH = [('%s/image/PLAYER/died.png' % ICON_DIR, 0.1)]
+ANIMATION_RIGHT = [('%s/image/player/r1.png' % ICON_DIR), ('%s/image/player/r2.png' % ICON_DIR),
+                   ('%s/image/player/r3.png' % ICON_DIR), ('%s/image/player/r4.png' % ICON_DIR),
+                   ('%s/image/player/r5.png' % ICON_DIR)]
+ANIMATION_LEFT = [('%s/image/player/l1.png ' % ICON_DIR), ('%s/image/player/l2.png' % ICON_DIR),
+                  ('%s/image/player/l3.png' % ICON_DIR), ('%s/image/player/l4.png' % ICON_DIR),
+                  ('%s/image/player/l5.png' % ICON_DIR)]
+ANIMATION_JUMP_LEFT = [('%s/image/player/jl.png' % ICON_DIR, 0.1)]
+ANIMATION_JUMP_RIGHT = [('%s/image/player/jr.png' % ICON_DIR, 0.1)]
+ANIMATION_JUMP = [('%s/image/player/j.png' % ICON_DIR, 0.1)]
+ANIMATION_STAY = [('%s/image/player/0.png' % ICON_DIR, 0.1)]
+ANIMATION_DEATH = [('%s/image/player/died.png' % ICON_DIR, 0.1)]
 
 
 class Player1(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
-        self.image = transform.scale(image.load("%s/image/PLAYER/0.png" % ICON_DIR), (22, 32))
+        self.image = transform.scale(image.load("%s/image/player/0.png" % ICON_DIR), (22, 32))
         self.image.set_colorkey(FON)
         self._health = 30
         self.rect = self.image.get_rect().move(x, y)
@@ -161,7 +163,7 @@ class Player1(sprite.Sprite):
         else:
             self.rect.x = 1200
             self.rect.y = 1200
-            self.image = image.load('%s/image/PLAYER/died.png' % ICON_DIR)
+            self.image = image.load('%s/image/player/died.png' % ICON_DIR)
 
     def update1(self, list_block, bot, pharmacy):
         if self._health > 0:
@@ -175,7 +177,7 @@ class Player1(sprite.Sprite):
         else:
             self.rect.x = 1200
             self.rect.y = 1200
-            self.image = image.load('%s/image/PLAYER/died.png' % ICON_DIR)
+            self.image = image.load('%s/image/player/died.png' % ICON_DIR)
 
     def died(self, bob, bot, b1, b2):
         self.injury(bob, b1)

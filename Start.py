@@ -1,8 +1,9 @@
 import configparser
+import os
 
 import pygame
 from pygame import *
-import os
+
 import Game
 from Ini import write_ini_file
 
@@ -24,16 +25,16 @@ def show_skin_menu(screen, bg, flag):
     config = configparser.ConfigParser()
     config.read("%s/settings.ini" % ICON_DIR)
 
-    p1 = transform.scale(image.load("%s/image/OTHERS/platform.png" % ICON_DIR), (20, 20))
-    p2 = transform.scale(image.load("%s/image/OTHERS/platform2.png" % ICON_DIR), (20, 20))
-    p3 = transform.scale(image.load("%s/image/OTHERS/platform3.png" % ICON_DIR), (20, 20))
-    p4 = transform.scale(image.load("%s/image/OTHERS/platform4.png" % ICON_DIR), (20, 20))
-    pl1 = transform.scale(image.load("%s/image/PLAYER/0.png" % ICON_DIR), (44, 64))
-    b1 = transform.scale(image.load("%s/image/BOT/bot0.png" % ICON_DIR), (44, 64))
+    p1 = transform.scale(image.load("%s/image/others/platform.png" % ICON_DIR), (20, 20))
+    p2 = transform.scale(image.load("%s/image/others/platform2.png" % ICON_DIR), (20, 20))
+    p3 = transform.scale(image.load("%s/image/others/platform3.png" % ICON_DIR), (20, 20))
+    p4 = transform.scale(image.load("%s/image/others/platform4.png" % ICON_DIR), (20, 20))
+    pl1 = transform.scale(image.load("%s/image/player/0.png" % ICON_DIR), (44, 64))
+    b1 = transform.scale(image.load("%s/image/bot/bot0.png" % ICON_DIR), (44, 64))
 
-    p22 = transform.scale(image.load("%s/image/OTHERS/1.png" % ICON_DIR), (20, 20))
-    p33 = transform.scale(image.load("%s/image/OTHERS/2.png" % ICON_DIR), (20, 20))
-    p44 = transform.scale(image.load("%s/image/OTHERS/3.png" % ICON_DIR), (20, 20))
+    p22 = transform.scale(image.load("%s/image/others/1.png" % ICON_DIR), (20, 20))
+    p33 = transform.scale(image.load("%s/image/others/2.png" % ICON_DIR), (20, 20))
+    p44 = transform.scale(image.load("%s/image/others/3.png" % ICON_DIR), (20, 20))
 
     font = pygame.font.SysFont('monospace', 40)
 
@@ -57,16 +58,16 @@ def show_skin_menu(screen, bg, flag):
                 mousexC, mouseyC = e.pos
 
         if Rect(130, 100, 20, 20).collidepoint(mousex, mousey):
-            config.set("Game zone", "image of block", "s/image/OTHERS/platform.png")
+            config.set("Game zone", "image of block", "s/image/others/platform.png")
 
         if Rect(130, 140, 20, 20).collidepoint(mousex, mousey):
-            config.set("Game zone", "image of block", "s/image/OTHERS/platform2.png")
+            config.set("Game zone", "image of block", "s/image/others/platform2.png")
 
         if Rect(130, 180, 20, 20).collidepoint(mousex, mousey):
-            config.set("Game zone", "image of block", "s/image/OTHERS/platform3.png")
+            config.set("Game zone", "image of block", "s/image/others/platform3.png")
 
         if Rect(130, 220, 20, 20).collidepoint(mousex, mousey):
-            config.set("Game zone", "image of block", "s/image/OTHERS/platform4.png")
+            config.set("Game zone", "image of block", "s/image/others/platform4.png")
 
         if Rect(650, 375, 450, 50).collidepoint(mousexC, mouseyC):
             text20 = font.render('1 игрок и 1 бот', False, RED)
@@ -181,7 +182,7 @@ def start():
     pygame.init()
     pygame.display.set_caption("GAME")
     screen = pygame.display.set_mode([WIDTH_WINDOW, HEIGHT_WINDOW])
-    bg = pygame.image.load("%s/image/OTHERS/image001.png" % ICON_DIR)
+    bg = pygame.image.load("%s/image/others/image001.png" % ICON_DIR)
     screen.blit(bg, (0, 0))
     flag = int(write_ini_file().get("Others", "start_game"))
     while 1:

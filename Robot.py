@@ -1,24 +1,26 @@
+import configparser
+import os
+
 import math as m
 from pygame import *
+
+from Ini import write_ini_file
 from Player import Player1
 from Pyganim import PygAnimation
-import os
-import configparser
-from Ini import write_ini_file
 
 config = configparser.ConfigParser()
 
 ICON_DIR = os.path.dirname(__file__)
 config.read("%s/settings.ini" % ICON_DIR)
 
-ANIMATION_RIGHT = [('%s/image/BOT/botr11.png' % ICON_DIR), ('%s/image/BOT/botr2.png' % ICON_DIR),
-                   ('%s/image/BOT/botr3.png' % ICON_DIR), ('%s/image/BOT/botr4.png' % ICON_DIR)]
-ANIMATION_LEFT = [('%s/image//BOT/botl1.png' % ICON_DIR), ('%s/image//BOT/botl2.png' % ICON_DIR),
-                  ('%s/image//BOT/botl3.png' % ICON_DIR),
-                  ('%s/image//BOT/botl4.png' % ICON_DIR)]
+ANIMATION_RIGHT = [('%s/image/bot/botr11.png' % ICON_DIR), ('%s/image/bot/botr2.png' % ICON_DIR),
+                   ('%s/image/bot/botr3.png' % ICON_DIR), ('%s/image/bot/botr4.png' % ICON_DIR)]
+ANIMATION_LEFT = [('%s/image//bot/botl1.png' % ICON_DIR), ('%s/image//bot/botl2.png' % ICON_DIR),
+                  ('%s/image//bot/botl3.png' % ICON_DIR),
+                  ('%s/image//bot/botl4.png' % ICON_DIR)]
 ANIMATION_DELAY = 0.1
-ANIMATION_STAY = [('%s/image/BOT/bot00.png' % ICON_DIR, 0.1)]
-ANIMATION_DEATH = [('%s/image/BOT/bot_grave.png' % ICON_DIR, 0.1)]
+ANIMATION_STAY = [('%s/image/bot/bot00.png' % ICON_DIR, 0.1)]
+ANIMATION_DEATH = [('%s/image/bot/bot_grave.png' % ICON_DIR, 0.1)]
 
 SPEED = int(config.get("Bot", "speed"))
 
@@ -32,7 +34,7 @@ class Robot(Player1):
         sprite.Sprite.__init__(self)
         super(Robot, self).__init__(x, y)
         self.save = [x, y]
-        self.image = image.load('%s/image/BOT/bot_grave.png' % ICON_DIR)
+        self.image = image.load('%s/image/bot/bot_grave.png' % ICON_DIR)
         boltAnim = []
         for anim in ANIMATION_RIGHT:
             boltAnim.append((anim, ANIMATION_DELAY))
