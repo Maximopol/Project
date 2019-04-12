@@ -1,7 +1,9 @@
-from pygame import sprite, Surface, image
+from pygame import Surface, image
+
+from blocks.Govno import Govno
 
 
-class Block(sprite.Sprite):
+class Block(Govno):
     # def __init__(self):
     #     sprite.Sprite.__init__(self)
     #     self.image = Surface((20, 20))
@@ -12,15 +14,9 @@ class Block(sprite.Sprite):
        'location' is the place where the images of the block are stored """
 
     def __init__(self, location):
-        sprite.Sprite.__init__(self)
+        super().__init__()
         self.image = Surface((20, 20))
         self.image = image.load(location)
         self.rect = self.image.get_rect()
-
-    """Returns the X and Y coordinates"""
-
-    @property
-    def x(self): return self.rect.x
-
-    @property
-    def y(self): return self.rect.y
+        self._x = None
+        self._y = None

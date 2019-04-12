@@ -24,14 +24,6 @@ class Block(sprite.Sprite):
         self.image = image.load(location)
         self.rect = self.image.get_rect()
 
-    """Returns the X and Y coordinates"""
-
-    @property
-    def x(self): return self.rect.x
-
-    @property
-    def y(self): return self.rect.y
-
 
 class Medicines(sprite.Sprite):
     def __init__(self, location):
