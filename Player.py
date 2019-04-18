@@ -1,12 +1,11 @@
-import os
-
 from pygame import *
 
 from Block import Medicines, Monster
 from Ini import write_ini_file
 from Pyganim import PygAnimation
-from Snarad import Patron
+from guns.bullets.Snarad import Patron
 from Start import FON
+import os
 
 RIGHT_MOVE = int(write_ini_file().get("Players", "speed"))
 LEFT_MOVE = -RIGHT_MOVE

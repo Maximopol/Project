@@ -1,4 +1,4 @@
-from pygame import draw, Rect, sprite
+from pygame import draw, Rect
 from Ini import write_ini_file
 
 SPEED = int(write_ini_file().get("Others", "speed of bullet"))
