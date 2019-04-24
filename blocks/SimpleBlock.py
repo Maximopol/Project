@@ -1,7 +1,7 @@
 from pygame import sprite, Surface, Color
 
 
-class Govno(sprite.Sprite):
+class SimpleBlock(sprite.Sprite):
     """Create blocks for the game.
        'location' is the place where the images of the block are stored """
 
@@ -11,21 +11,19 @@ class Govno(sprite.Sprite):
         self.image.fill(Color("#FF6262"))
 
         self.rect = self.image.get_rect()
-        self._x = None
-        self._y = None
 
     """Returns the X and Y coordinates"""
 
     @property
-    def x(self): return self._x
+    def x(self): return self.rect.x
 
     @property
-    def y(self): return self._y
+    def y(self): return self.rect.y
 
     @x.setter
     def x(self, value):
-        self._x = value
+        self.rect.x = value
 
     @y.setter
     def y(self, value):
-        self._y = value
+        self.rect.y = value

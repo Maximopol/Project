@@ -1,7 +1,9 @@
-from pygame import Surface, image, sprite
+from blocks.SimpleBlock import SimpleBlock
+from pygame import image, sprite
+from pygame.surface import Surface
 
 
-class Block(sprite.Sprite):
+class Block(SimpleBlock):
     """Create blocks for the game.
     'location' is the place where the images of the block are stored """
 
