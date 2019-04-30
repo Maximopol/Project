@@ -1,11 +1,11 @@
 import configparser
-import os
 
 import pygame
 from pygame import *
 
-import Game
-from Ini import write_ini_file
+from old import Game
+from old.Ini import write_ini_file
+import os
 
 ICON_DIR = os.path.dirname(__file__)
 WIDTH_WINDOW = 1100
@@ -182,7 +182,7 @@ def start():
     pygame.init()
     pygame.display.set_caption("GAME")
     screen = pygame.display.set_mode([WIDTH_WINDOW, HEIGHT_WINDOW])
-    bg = pygame.image.load("%s/image/others/image001.png" % ICON_DIR)
+    bg = pygame.image.load("F:/Project/image/others/image001.png")
     screen.blit(bg, (0, 0))
     flag = int(write_ini_file().get("Others", "start_game"))
     while 1:

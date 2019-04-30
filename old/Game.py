@@ -2,10 +2,9 @@ from time import sleep
 
 import pygame
 
-from Block import Block
-from Ini import write_ini_file
-from Player import *
-from Robot import Robot
+from old.Block import Block
+from old.Player import *
+from old.Robot import Robot
 
 WIDTH_WINDOW = int(write_ini_file().get("Game zone", "width window"))
 HEIGHT_WINDOW = int(write_ini_file().get("Game zone", "height window"))
@@ -56,7 +55,7 @@ def create_map():
     for z in level:
         for n in z:
             if n == '-':
-                block = Block(str("%" + write_ini_file().get("Game zone", "image of block")) % ICON_DIR)
+                block = Block(str(write_ini_file().get("Game zone", "image of block")))
                 block.rect.x = x
                 block.rect.y = y
                 list_block.add(block)
@@ -94,8 +93,8 @@ def window1(body1, body2, bot):
     myfont = pygame.font.SysFont("monospace", 30)
     win = pygame.font.SysFont("monospace", 40)
 
-    apte4ka1 = Medicines("%s/image/others/Medicines.png" % ICON_DIR)
-    apte4ka2 = Medicines("%s/image/others/Medicines.png" % ICON_DIR)
+    apte4ka1 = Medicines("F:/Project/image/others/Medicines.png")
+    apte4ka2 = Medicines("F:/Project/image/others/Medicines.png")
     hilka_list.add(apte4ka1)
 
     mnt = Monster(600, 200)

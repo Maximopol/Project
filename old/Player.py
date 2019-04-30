@@ -1,10 +1,10 @@
 from pygame import *
 
-from Block import Medicines, Monster
-from Ini import write_ini_file
-from Pyganim import PygAnimation
+from old.Block import Medicines, Monster
+from old.Ini import write_ini_file
+from old.Pyganim import PygAnimation
 from guns.bullets.Snarad import Patron
-from Start import FON
+from old.Start import FON
 import os
 
 RIGHT_MOVE = int(write_ini_file().get("Players", "speed"))
@@ -15,23 +15,23 @@ ANIMATION_DELAY = 0.1
 
 ICON_DIR = os.path.dirname(__file__)
 
-ANIMATION_RIGHT = [('%s/image/player/r1.png' % ICON_DIR), ('%s/image/player/r2.png' % ICON_DIR),
-                   ('%s/image/player/r3.png' % ICON_DIR), ('%s/image/player/r4.png' % ICON_DIR),
-                   ('%s/image/player/r5.png' % ICON_DIR)]
-ANIMATION_LEFT = [('%s/image/player/l1.png ' % ICON_DIR), ('%s/image/player/l2.png' % ICON_DIR),
-                  ('%s/image/player/l3.png' % ICON_DIR), ('%s/image/player/l4.png' % ICON_DIR),
-                  ('%s/image/player/l5.png' % ICON_DIR)]
-ANIMATION_JUMP_LEFT = [('%s/image/player/jl.png' % ICON_DIR, 0.1)]
-ANIMATION_JUMP_RIGHT = [('%s/image/player/jr.png' % ICON_DIR, 0.1)]
-ANIMATION_JUMP = [('%s/image/player/j.png' % ICON_DIR, 0.1)]
-ANIMATION_STAY = [('%s/image/player/0.png' % ICON_DIR, 0.1)]
-ANIMATION_DEATH = [('%s/image/player/died.png' % ICON_DIR, 0.1)]
+ANIMATION_RIGHT = [('F:/Project/image/player/r1.png'), ('F:/Project/image/player/r2.png'),
+                   ('F:/Project/image/player/r3.png'), ('F:/Project/image/player/r4.png'),
+                   ('F:/Project/image/player/r5.png')]
+ANIMATION_LEFT = [('F:/Project/image/player/l1.png '), ('F:/Project/image/player/l2.png'),
+                  ('F:/Project/image/player/l3.png'), ('F:/Project/image/player/l4.png'),
+                  ('F:/Project/image/player/l5.png')]
+ANIMATION_JUMP_LEFT = [('F:/Project/image/player/jl.png', 0.1)]
+ANIMATION_JUMP_RIGHT = [('F:/Project/image/player/jr.png', 0.1)]
+ANIMATION_JUMP = [('F:/Project/image/player/j.png', 0.1)]
+ANIMATION_STAY = [('F:/Project/image/player/0.png', 0.1)]
+ANIMATION_DEATH = [('F:/Project/image/player/died.png', 0.1)]
 
 
 class Player1(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
-        self.image = transform.scale(image.load("%s/image/player/0.png" % ICON_DIR), (22, 32))
+        self.image = transform.scale(image.load("F:/Project/image/player/0.png"), (22, 32))
         self.image.set_colorkey(FON)
         self._health = 30
         self.rect = self.image.get_rect().move(x, y)
