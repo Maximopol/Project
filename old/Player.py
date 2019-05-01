@@ -3,7 +3,7 @@ from pygame import *
 from old.Block import Medicines, Monster
 from old.Ini import write_ini_file
 from old.Pyganim import PygAnimation
-from guns.bullets.Snarad import Patron
+from guns.bullets.Snarad import Patron, Patron2
 from old.Start import FON
 import os
 
@@ -29,13 +29,15 @@ ANIMATION_DEATH = [('F:/Project/image/player/died.png', 0.1)]
 
 
 class Player1(sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, Patron):
         sprite.Sprite.__init__(self)
         self.image = transform.scale(image.load("F:/Project/image/player/0.png"), (22, 32))
         self.image.set_colorkey(FON)
         self._health = 30
         self.rect = self.image.get_rect().move(x, y)
         self.rotate_rect = self.image.get_rect()
+
+        self.patron = Patron
 
         self.onGround = True
         self.yve = 0
@@ -147,7 +149,7 @@ class Player1(sprite.Sprite):
 
     def attack(self):
         if self.second < 0:
-            self.bullets.append(Patron(self.rect.x + 11, self.rect.y + 16, (100, 100, 150), self.facing))
+            self.bullets.append(self.patron(self.rect.x + 11, self.rect.y + 16, (100, 100, 150), self.facing))
             self.second = 12
 
     def update(self, list_block, bob, bot, pharmacy):
@@ -162,7 +164,7 @@ class Player1(sprite.Sprite):
         else:
             self.rect.x = 1200
             self.rect.y = 1200
-            self.image = image.load('%s/image/player/died.png' % ICON_DIR)
+            self.image = image.load('F:/Project/image/player/died.png')
 
     def update1(self, list_block, bot, pharmacy):
         if self._health > 0:
@@ -176,7 +178,7 @@ class Player1(sprite.Sprite):
         else:
             self.rect.x = 1200
             self.rect.y = 1200
-            self.image = image.load('%s/image/player/died.png' % ICON_DIR)
+            self.image = image.load('F:/Project/image/player/died.png')
 
     def died(self, bob, bot, b1, b2):
         self.injury(bob, b1)
@@ -200,7 +202,7 @@ class Player1(sprite.Sprite):
     def injury(self, bob, n):
         for b in bob:
             if Rect(self.rect.x, self.rect.y, 22, 32).collidepoint(b.x, b.y):
-                self._health -= 1
+                self._health -= b.damage()
                 n.pop(b)
 
     @property
@@ -221,9 +223,9 @@ class Player1(sprite.Sprite):
 
 
 class Player2(Player1):
-    def __init__(self, x, y):
+    def __init__(self, x, y, kek):
         sprite.Sprite.__init__(self)
-        super(Player2, self).__init__(x, y)
+        super(Player2, self).__init__(x, y, kek)
 
     def click_button(self):
         if key.get_pressed()[K_d]:

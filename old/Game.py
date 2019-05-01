@@ -2,6 +2,7 @@ from time import sleep
 
 import pygame
 
+from guns.bullets.Snarad import Patron3
 from old.Block import Block
 from old.Player import *
 from old.Robot import Robot
@@ -78,7 +79,7 @@ def winner(b1, b2, b3):
 
 def draw(bullets, screen):
     for bullet in bullets:
-        bullet.draw(screen)
+        bullet.drawing(screen)
 
 
 def window1(body1, body2, bot):
@@ -209,23 +210,23 @@ def window2(body1, bot, corrected):
 
 def main(flag):
     create_map()
-    body1 = Player1(945, 585)
+    body1 = Player1(945, 585, Patron2)
     all_list.add(body1)
 
     if flag == 1:
-        bot = Robot(400, 300)
-        body2 = Player2(30, 585)
+        bot = Robot(400, 300, Patron3)
+        body2 = Player2(30, 585, Patron2)
         all_list.add(body2)
         all_list.add(bot)
         window1(body1, body2, bot)
 
     elif flag == 2:
-        body2 = Player2(30, 585)
+        body2 = Player2(30, 585, Patron2)
         all_list.add(body2)
         window2(body1, body2, True)
 
     elif flag == 0:
-        bot = Robot(400, 300)
+        bot = Robot(400, 300, Patron3)
         all_list.add(bot)
         window2(body1, bot, False)
 

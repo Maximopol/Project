@@ -12,14 +12,14 @@ config = configparser.ConfigParser()
 ICON_DIR = os.path.dirname(__file__)
 config.read("%s/settings.ini" % ICON_DIR)
 
-ANIMATION_RIGHT = [('F:/Project/image/bot/botr11.png' ), ('F:/Project/image/bot/botr2.png' ),
-                   ('F:/Project/image/bot/botr3.png' ), ('F:/Project/image/bot/botr4.png' )]
-ANIMATION_LEFT = [('F:/Project/image//bot/botl1.png' ), ('F:/Project/image//bot/botl2.png' ),
-                  ('F:/Project/image//bot/botl3.png' ),
-                  ('F:/Project/image//bot/botl4.png' )]
+ANIMATION_RIGHT = [('F:/Project/image/bot/botr11.png'), ('F:/Project/image/bot/botr2.png'),
+                   ('F:/Project/image/bot/botr3.png'), ('F:/Project/image/bot/botr4.png')]
+ANIMATION_LEFT = [('F:/Project/image//bot/botl1.png'), ('F:/Project/image//bot/botl2.png'),
+                  ('F:/Project/image//bot/botl3.png'),
+                  ('F:/Project/image//bot/botl4.png')]
 ANIMATION_DELAY = 0.1
-ANIMATION_STAY = [('F:/Project/image/bot/bot00.png' , 0.1)]
-ANIMATION_DEATH = [('F:/Project/image/bot/bot_grave.png' , 0.1)]
+ANIMATION_STAY = [('F:/Project/image/bot/bot00.png', 0.1)]
+ANIMATION_DEATH = [('F:/Project/image/bot/bot_grave.png', 0.1)]
 
 SPEED = int(config.get("Bot", "speed"))
 
@@ -27,13 +27,13 @@ BLOCK_W = BLOCK_H = 20
 
 
 class Robot(Player1):
-    def __init__(self, x, y):
+    def __init__(self, x, y, kek):
         self.FON = (int(write_ini_file().get("Game zone", "color1")), int(write_ini_file().get("Game zone", "color2")),
                     int(write_ini_file().get("Game zone", "color3")))
         sprite.Sprite.__init__(self)
-        super(Robot, self).__init__(x, y)
+        super(Robot, self).__init__(x, y, kek)
         self.save = [x, y]
-        self.image = image.load('F:/Project/image/bot/bot_grave.png' )
+        self.image = image.load('F:/Project/image/bot/bot_grave.png')
         boltAnim = []
         for anim in ANIMATION_RIGHT:
             boltAnim.append((anim, ANIMATION_DELAY))
@@ -92,6 +92,11 @@ class Robot(Player1):
             self.rect.y -= SPEED
         else:
             self.rect.y += SPEED
+
+    def attack(self):
+        if self.second < 0:
+            self.bullets.append(self.patron(self.rect.x + 11, self.rect.y + 16, (255, 100, 100), self.facing))
+            self.second = 12
 
     def update(self, list_block, b1, b2, pharmacy):
 
