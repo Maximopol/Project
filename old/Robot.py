@@ -12,11 +12,11 @@ config = configparser.ConfigParser()
 ICON_DIR = os.path.dirname(__file__)
 config.read("%s/settings.ini" % ICON_DIR)
 
-ANIMATION_RIGHT = [('F:/Project/image/bot/botr11.png'), ('F:/Project/image/bot/botr2.png'),
-                   ('F:/Project/image/bot/botr3.png'), ('F:/Project/image/bot/botr4.png')]
-ANIMATION_LEFT = [('F:/Project/image//bot/botl1.png'), ('F:/Project/image//bot/botl2.png'),
-                  ('F:/Project/image//bot/botl3.png'),
-                  ('F:/Project/image//bot/botl4.png')]
+ANIMATION_RIGHT = ['F:/Project/image/bot/botr11.png', 'F:/Project/image/bot/botr2.png',
+                   'F:/Project/image/bot/botr3.png', 'F:/Project/image/bot/botr4.png']
+ANIMATION_LEFT = ['F:/Project/image//bot/botl1.png', 'F:/Project/image//bot/botl2.png',
+                  'F:/Project/image//bot/botl3.png',
+                  'F:/Project/image//bot/botl4.png']
 ANIMATION_DELAY = 0.1
 ANIMATION_STAY = [('F:/Project/image/bot/bot00.png', 0.1)]
 ANIMATION_DEATH = [('F:/Project/image/bot/bot_grave.png', 0.1)]

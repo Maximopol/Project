@@ -2,7 +2,7 @@ from time import sleep
 
 import pygame
 
-from guns.bullets.Snarad import Patron3
+from guns.bullets.Snarad import Patron3, Patron4
 from old.Block import Block
 from old.Player import *
 from old.Robot import Robot

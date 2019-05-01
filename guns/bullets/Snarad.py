@@ -1,41 +1,14 @@
 from pygame import draw, Rect, Surface
+
+from guns.ASnarad import APatron
 from old.Ini import write_ini_file
-from abc import ABC, abstractmethod
 
 SPEED = int(write_ini_file().get("Others", "speed of bullet"))
 RADIUS = int(write_ini_file().get("Others", "radius bullet"))
 BLOCK_SIZE = int(write_ini_file().get("Others", "block size"))
 
 
-class Patron(ABC):
-    DEFAULT_DAMAGE = 2
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    @abstractmethod
-    def drawing(self, win: Surface):
-        pass
-
-        # draw.ellipse(win, self.color, (self.x, self.y))
-
-        # draw.ellipse(win, self.color, (self.x, self.y,2,3))
-        # # draw.circle(win, self.color, (self.x, self.y), self.radius)
-        # self.x += self.vel
-
-    @abstractmethod
-    def damage(self):
-        pass
-
-    def collide(self, blocks):
-        for block in blocks:
-            if Rect(block.x, block.y, BLOCK_SIZE, BLOCK_SIZE).collidepoint(self.x, self.y):
-                return True
-        return False
-
-
-class Patron2(Patron):
+class Patron2(APatron):
     DEFAULT_SPEED = 10
     DEFAULT_DAMAGE = 3
 
@@ -54,7 +27,7 @@ class Patron2(Patron):
         return self.DEFAULT_DAMAGE
 
 
-class Patron3(Patron):
+class Patron3(APatron):
     DEFAULT_SPEED = 15
 
     def __init__(self, x, y, color, facing):
@@ -70,3 +43,14 @@ class Patron3(Patron):
 
     def damage(self):
         return super().DEFAULT_DAMAGE
+
+
+class Patron4(APatron):
+    def __init__(self, x, y, color, facing):
+        super().__init__(x, y)
+
+    def drawing(self, win: Surface):
+        pass
+
+    def damage(self):
+        return 0

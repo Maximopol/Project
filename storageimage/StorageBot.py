@@ -1,0 +1,2 @@
+class StorageBot:
+    pass

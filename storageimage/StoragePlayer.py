@@ -1,0 +1,2 @@
+class StoragePlayer:
+    pass

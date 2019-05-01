@@ -3,7 +3,7 @@ from pygame import *
 from old.Block import Medicines, Monster
 from old.Ini import write_ini_file
 from old.Pyganim import PygAnimation
-from guns.bullets.Snarad import Patron, Patron2
+from guns.bullets.Snarad import Patron3, Patron2
 from old.Start import FON
 import os
 
@@ -15,12 +15,12 @@ ANIMATION_DELAY = 0.1
 
 ICON_DIR = os.path.dirname(__file__)
 
-ANIMATION_RIGHT = [('F:/Project/image/player/r1.png'), ('F:/Project/image/player/r2.png'),
-                   ('F:/Project/image/player/r3.png'), ('F:/Project/image/player/r4.png'),
-                   ('F:/Project/image/player/r5.png')]
-ANIMATION_LEFT = [('F:/Project/image/player/l1.png '), ('F:/Project/image/player/l2.png'),
-                  ('F:/Project/image/player/l3.png'), ('F:/Project/image/player/l4.png'),
-                  ('F:/Project/image/player/l5.png')]
+ANIMATION_RIGHT = ['F:/Project/image/player/r1.png', 'F:/Project/image/player/r2.png',
+                   'F:/Project/image/player/r3.png', 'F:/Project/image/player/r4.png',
+                   'F:/Project/image/player/r5.png']
+ANIMATION_LEFT = ['F:/Project/image/player/l1.png ', 'F:/Project/image/player/l2.png',
+                  'F:/Project/image/player/l3.png', 'F:/Project/image/player/l4.png',
+                  'F:/Project/image/player/l5.png']
 ANIMATION_JUMP_LEFT = [('F:/Project/image/player/jl.png', 0.1)]
 ANIMATION_JUMP_RIGHT = [('F:/Project/image/player/jr.png', 0.1)]
 ANIMATION_JUMP = [('F:/Project/image/player/j.png', 0.1)]
